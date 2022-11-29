@@ -22,7 +22,7 @@ int execute(char **arguments, char **env)
 
 		if (val == -1)
 		{
-			perror("Error");
+			perror("./hsh");
 		}
 	}
 	else
