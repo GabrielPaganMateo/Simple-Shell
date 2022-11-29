@@ -1,5 +1,4 @@
-#include <sys/wait.h>
-#include <unistd.h>
+#include "header.h"
 /*
  * execute
  */

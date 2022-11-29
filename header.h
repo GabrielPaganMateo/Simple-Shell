@@ -9,4 +9,6 @@
 #include <sys/types.h>
 #include <sys/types.h>
 char *read_line();
+char** split_input(char *line);
+void execute(char **arguments);
 #endif
