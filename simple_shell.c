@@ -5,12 +5,15 @@
  */
 int main(void)
 {
+	char *line;
+	char **tokens;
+
 	while (1)
 	{
 		write(1, "$ ", 2);
 
-	  char *line = read_line();
-		char **tokens = split_input(line);
+		line = read_line();
+		tokens = split_input(line);
 
 		if (tokens[0] != NULL)
 		{

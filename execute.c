@@ -10,7 +10,7 @@ void execute(char **arguments)
 	{
 		execve(arguments[0], arguments, NULL);
 		perror("Error");
-		exit;
+		exit(1);
 	}
 	else if (childID > 0)
 	{
