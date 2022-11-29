@@ -8,7 +8,10 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <sys/types.h>
-char *read_line();
-char** split_input(char *line);
-void execute(char **arguments);
+#include <errno.h>
+char *read_line(void);
+char **split_input(char *line);
+int execute(char **arguments, char **env);
+void print_prompt1(void);
+void print_prompt2(void);
 #endif
