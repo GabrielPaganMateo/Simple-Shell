@@ -1,12 +1,11 @@
-#include <stdlib.h>
-#include <string.h>
+#include "header.h"
 /**
  * split_input
  */
 char** split_input(char *line)
 {
-	int length 0;
-	int capacity 16;
+	int length = 0;
+	int capacity = 16;
 	char **arguments = malloc(capacity * sizeof(char *));
 
 	char *delimiters = " \t\r\n";
