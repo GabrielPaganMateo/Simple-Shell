@@ -9,7 +9,7 @@ int main(void)
 	{
 		write(1, "$ ", 2);
 
-		char *line = read_line();
+	  char *line = read_line();
 		char **tokens = split_line(line);
 
 		if (tokens[0] != NULL)
