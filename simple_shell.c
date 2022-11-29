@@ -1,9 +1,11 @@
 #include "header.h"
 /**
- *main-principal function for simple shell
+ *main-function for infinite loop
+ *@env: environment
+ *@ac: arguments count
  *Return: infinite loop to display prompt and read lines
  */
-int main(void)
+int main(int ac __attribute__((unused)), char **env)
 {
 	char *line;
 	char **tokens;
@@ -17,7 +19,7 @@ int main(void)
 
 		if (tokens[0] != NULL)
 		{
-			execute(tokens);
+			execute(tokens, env);
 		}
 		free(tokens);
 		free(line);
