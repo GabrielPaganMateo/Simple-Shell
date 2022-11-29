@@ -1,8 +1,12 @@
+#include "header.h"
 /**
  * Simple Shell
  */
 int main(void)
 {
-	while (true)
+	while (1)
 	{
 
+		write(1, "$ ", 2);
+	}
+}
