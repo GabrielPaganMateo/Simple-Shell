@@ -1,8 +1,10 @@
 #include "header.h"
 /**
- * split_input
+ * split_input-function to divide arguments on command line
+ * @line: pointer to input string
+ * Return: arguments splitted
  */
-char** split_input(char *line)
+char **split_input(char *line)
 {
 	int length = 0;
 	int capacity = 16;
