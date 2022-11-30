@@ -7,62 +7,40 @@
  */
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
 {
-	char *line;
-	char **tokens;
+	char *line = NULL, **tokens;
 	size_t buflen = 0;
-	int i = 0;
+	int i = 0, flag;
 
-	if (isatty(0))
+	while (1)
 	{
-		while (1)
+		if (isatty(0))
 		{
 			write(1, "$ ", 2);
-			getline(&line, &buflen, stdin);
-			if (_strcmp(line, "exit\n") == 0)
-			{
-				free(line);
-				line = NULL;
-				exit(0);
-			}
-			if (_strcmp(line, "env\n") == 0)
-			{
-				while (env[i])
-				{
-					write(1, env[i], _strlen(env[i]));
-					write(1, "\n", 1);
-					i++;
-				}
-			}
-			tokens = split_input(line);
-			if (tokens[0])
-			{
-				execute(tokens, env);
-			}
 		}
-	}
-	else
-	{
-		getline(&line, &buflen, stdin);
-		if (_strcmp(line, "exit\n") == 0)
+		flag = getline(&line, &buflen, stdin);
+		if (flag == EOF)
 		{
-			exit(0);
+			write(1, "\n", 1);
+			exit(EXIT_SUCCESS);
 		}
-		if (_strcmp(line, "env\n") == 0)
+		if (line[0] == '\n')
 		{
-			while (env[i])
-			{
-				write(1, env[i], _strlen(env[i]));
-				write(1, "\n", 1);
-				i++;
-			}
+			free(line);
+			line = NULL;
+			write(1, "$ ", 2);
+			continue;
 		}
-		tokens = split_input(line);
-		if (tokens[0])
+		tokens = split_input(line, " \n");
+		execute(tokens, env);
+		free(line);
+		line = NULL;
+		while (tokens[i])
 		{
-			execute(tokens, env);
+			free(tokens[i]);
+			i++;
 		}
-		return(0);
 	}
 	free(line);
+	line = NULL;
 	return(0);
 }

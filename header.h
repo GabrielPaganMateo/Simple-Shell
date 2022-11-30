@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <errno.h>
 char *read_line(void);
-char **split_input(char *line);
+char **split_input(char *line, char *delimiter);
 int execute(char **arguments, char **env);
 void print_prompt1(void);
 void print_prompt2(void);
@@ -18,4 +18,5 @@ int _strlen(char *s);
 int _strcmp(char *s1, char *s2);
 int _env(char *line, char **env);
 int X(char *line);
+char *_strcpy(char *dest, char *src);
 #endif

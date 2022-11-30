@@ -2,28 +2,28 @@
 /**
  * split_input-function to divide arguments on command line
  * @line: pointer to input string
- * Return: arguments splitted
+ * @delimiter: pointer to delimiters
+ * Return: arguments divided
  */
-char **split_input(char *line)
+char **split_input(char *line, char *delimiter)
 {
-	int length = 0;
-	char **tokens = malloc(_strlen(line) * sizeof(char *));
-	char *delimiters = " \n";
-	char *token = strtok(line, delimiters);
+	int i = 0;
+	char *token, **tokens = malloc(_strlen(line) * sizeof(char *));
 
 	if (tokens == NULL)
-	{
 		return (NULL);
-	}
 
+	token = strtok(line, delimiter);
 	while (token != NULL)
 	{
-		tokens[length] = token;
-		length++;
-
-		token = strtok(NULL, delimiters);
+		tokens[i] = malloc(sizeof(char *) * _strlen(token) + 1);
+		if (tokens == NULL)
+			return (NULL);
+		_strcpy(tokens[i], token);
+		i++;
+		token = NULL;
+		token = strtok(NULL, delimiter);
 	}
-
-	tokens[length] = NULL;
+	tokens[i] = NULL;
 	return (tokens);
 }
