@@ -7,8 +7,7 @@
 char **split_input(char *line)
 {
 	int length = 0;
-	int capacity = 16;
-	char **arguments = malloc(capacity * sizeof(char *));
+	char **arguments = malloc(strlen(line) * (sizeof(char *)));
 
 	char *delimiters = " \t\r\n";
 	char *argument = strtok(line, delimiters);

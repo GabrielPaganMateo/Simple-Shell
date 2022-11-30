@@ -21,7 +21,7 @@ int main(int ac __attribute__((unused)), char **env)
 		{
 			execute(tokens, env);
 		}
-		free(tokens);
 		free(line);
 	}
+	return(0);
 }

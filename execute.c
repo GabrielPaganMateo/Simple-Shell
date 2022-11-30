@@ -9,6 +9,7 @@ int execute(char **arguments, char **env)
 {
 	pid_t childID;
 	int status;
+	int i = 0;
 
 	childID = fork();
 
@@ -26,6 +27,15 @@ int execute(char **arguments, char **env)
 		}
 	}
 	else
+	{
 		wait(&status);
+
+		while (arguments[i])
+		{
+			free(arguments[i]);
+			i++;
+		}
+		free (arguments);
+	}
 	return (0);
 }
