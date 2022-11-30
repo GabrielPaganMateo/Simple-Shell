@@ -7,7 +7,7 @@
  */
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
 {
-	char *line = NULL, **tokens;
+	char *line = NULL, **tokens = NULL;
 	size_t buflen = 0;
 	int i = 0, flag;
 

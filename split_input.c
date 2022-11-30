@@ -8,7 +8,7 @@
 char **split_input(char *line, char *delimiter)
 {
 	int i = 0;
-	char *token, **tokens = malloc(_strlen(line) * sizeof(char *));
+	char *token = NULL, **tokens = malloc(_strlen(line) * sizeof(char *));
 
 	if (tokens == NULL)
 		return (NULL);
