@@ -5,10 +5,11 @@
  * @env: environment
  * Return: Always 0 success
  */
-int execute(char **arguments, char **env)
+int execute(char **arguments)
 {
 	pid_t childID;
 	int status;
+	int i = 0;
 
 	childID = fork();
 
@@ -18,14 +19,24 @@ int execute(char **arguments, char **env)
 	}
 	if (childID == 0)
 	{
-		int val = execve(arguments[0], arguments, env);
+		int val = execve(arguments[0], arguments, NULL);
 
 		if (val == -1)
 		{
-			perror("Error");
+			perror("./hsh");
 		}
+
 	}
 	else
+	{
 		wait(&status);
+
+		while (arguments[i])
+		{
+			free(arguments[i]);
+			i++;
+		}
+		free(arguments);
+	}
 	return (0);
 }

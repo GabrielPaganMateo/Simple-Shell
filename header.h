@@ -11,7 +11,7 @@
 #include <errno.h>
 char *read_line(void);
 char **split_input(char *line);
-int execute(char **arguments, char **env);
+int execute(char **arguments);
 void print_prompt1(void);
 void print_prompt2(void);
 #endif
