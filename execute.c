@@ -5,7 +5,7 @@
  * @env: environment
  * Return: Always 0 success
  */
-int execute(char **arguments)
+int execute(char **tokens, char **env)
 {
 	pid_t childID;
 	int status;
@@ -17,9 +17,9 @@ int execute(char **arguments)
 	{
 		return (-1);
 	}
-	if (childID == 0)
+	else if (childID == 0)
 	{
-		int val = execve(arguments[0], arguments, NULL);
+		int val = execve(tokens[0], tokens, env);
 
 		if (val == -1)
 		{
@@ -31,12 +31,12 @@ int execute(char **arguments)
 	{
 		wait(&status);
 
-		while (arguments[i])
+		while (tokens[i])
 		{
-			free(arguments[i]);
+			free(tokens[i]);
 			i++;
 		}
-		free(arguments);
+		free(tokens);
 	}
 	return (0);
 }

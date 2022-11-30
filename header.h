@@ -11,7 +11,11 @@
 #include <errno.h>
 char *read_line(void);
 char **split_input(char *line);
-int execute(char **arguments);
+int execute(char **arguments, char **env);
 void print_prompt1(void);
 void print_prompt2(void);
+int _strlen(char *s);
+int _strcmp(char *s1, char *s2);
+int _env(char *line, char **env);
+int X(char *line);
 #endif
