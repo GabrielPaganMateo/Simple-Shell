@@ -1,42 +1,47 @@
 #include "header.h"
 /**
  * execute - function to execute commands from command line
- * @arguments: arguments passed to the command line
- * @env: environment
+ * @tokens: arguments passed to the command line
+ * @env: pointer to environment variables
  * Return: Always 0 success
  */
 int execute(char **tokens, char **env)
 {
 	pid_t childID;
-	int status;
-	int i = 0;
+	int i = 0, j = 0, status;
 
-	childID = fork();
-
-	if (childID == -1)
+	if (_strcmp(tokens[0], "exit") == 0)
+		exit(0);
+	if (_strcmp(tokens[0], "env") == 0)
 	{
-		return (-1);
+		while (env[i])
+		{
+			write(1, env[i], _strlen(env[i]));
+			write(1, "\n", 1);
+			i++;
+		}
+		return (1);
 	}
+	childID = fork();
+	if (childID == -1)
+		perror("Error");
 	else if (childID == 0)
 	{
-		int val = execve(tokens[0], tokens, env);
-
-		if (val == -1)
+		if (execve(tokens[0], tokens, env) == -1)
 		{
-			perror("./hsh");
+			perror("Execve");
+			exit(EXIT_FAILURE);
 		}
-
 	}
 	else
 	{
 		wait(&status);
-
-		while (tokens[i])
+		while (tokens[j])
 		{
-			free(tokens[i]);
-			i++;
+			free(tokens[j]);
+			j++;
 		}
 		free(tokens);
 	}
-	return (0);
+	return (1);
 }
