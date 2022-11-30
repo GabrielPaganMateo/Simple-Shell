@@ -5,7 +5,7 @@
  * @env: environment
  * Return: Always 0 success
  */
-int execute(char **arguments, char **env)
+int execute(char **arguments)
 {
 	pid_t childID;
 	int status;
@@ -19,12 +19,13 @@ int execute(char **arguments, char **env)
 	}
 	if (childID == 0)
 	{
-		int val = execve(arguments[0], arguments, env);
+		int val = execve(arguments[0], arguments, NULL);
 
 		if (val == -1)
 		{
 			perror("./hsh");
 		}
+
 	}
 	else
 	{
@@ -35,7 +36,7 @@ int execute(char **arguments, char **env)
 			free(arguments[i]);
 			i++;
 		}
-		free (arguments);
+		free(arguments);
 	}
 	return (0);
 }

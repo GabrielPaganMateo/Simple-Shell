@@ -7,19 +7,23 @@
 char **split_input(char *line)
 {
 	int length = 0;
-	char **arguments = malloc(strlen(line) * (sizeof(char *)));
-
+	char **tokens = malloc(16 * sizeof(char *));
 	char *delimiters = " \t\r\n";
-	char *argument = strtok(line, delimiters);
+	char *token = strtok(line, delimiters);
 
-	while (argument != NULL)
+	if (tokens == NULL)
 	{
-		arguments[length] = argument;
-		length++;
-
-		argument = strtok(NULL, delimiters);
+		return (NULL);
 	}
 
-	arguments[length] = NULL;
-	return (arguments);
+	while (token != NULL)
+	{
+		tokens[length] = token;
+		length++;
+
+		token = strtok(NULL, delimiters);
+	}
+
+	tokens[length] = NULL;
+	return (tokens);
 }

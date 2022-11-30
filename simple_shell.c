@@ -5,23 +5,30 @@
  *@ac: arguments count
  *Return: infinite loop to display prompt and read lines
  */
-int main(int ac __attribute__((unused)), char **env)
+int main()
 {
 	char *line;
 	char **tokens;
+	size_t buflen = 0;
+	int mode = 1;
 
 	while (1)
 	{
-		write(1, "$ ", 2);
 
-		line = read_line();
+			mode = isatty(STDIN_FILENO);
+			if (mode == 1)
+			{
+				write(1, "$ ", 2);
+			}
+
+		getline(&line, &buflen, stdin);
 		tokens = split_input(line);
 
 		if (tokens[0] != NULL)
 		{
-			execute(tokens, env);
+			execute(tokens);
 		}
-		free(line);
 	}
+	free(line);
 	return(0);
 }
