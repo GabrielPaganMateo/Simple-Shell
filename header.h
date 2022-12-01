@@ -9,9 +9,10 @@
 #include <sys/types.h>
 #include <sys/types.h>
 #include <errno.h>
+extern char **environ;
 char *read_line(void);
 char **split_input(char *line, char *delimiter);
-int execute(char **arguments, char **env);
+int execute(char *line, char **arguments, char **env);
 void print_prompt1(void);
 void print_prompt2(void);
 int _strlen(char *s);
