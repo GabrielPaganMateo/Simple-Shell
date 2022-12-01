@@ -21,6 +21,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		if (flag == EOF)
 		{
 			write(1, "\n", 1);
+			free(line);
 			exit(EXIT_SUCCESS);
 		}
 		if (line[0] == '\n')
@@ -31,7 +32,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 			continue;
 		}
 		tokens = split_input(line, " \n");
-		execute(tokens, env);
+		execute(line, tokens, env);
 		free(line);
 	}
 	return(0);
