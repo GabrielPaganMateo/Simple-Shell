@@ -33,7 +33,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		}
 		tokens = split_input(line, " \n");
 		execute(line, tokens, env);
-		free(line);
 	}
 	return(0);
 }
