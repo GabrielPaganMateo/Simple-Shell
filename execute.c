@@ -8,7 +8,8 @@
 int execute(char **tokens, char **env)
 {
 	pid_t childID;
-	int i = 0, j = 0, status;
+	unsigned int i = 0;
+	int j = 0, status;
 
 	if (_strcmp(tokens[0], "exit") == 0)
 		exit(0);
@@ -20,6 +21,12 @@ int execute(char **tokens, char **env)
 			write(1, "\n", 1);
 			i++;
 		}
+		while(tokens[j])
+		{
+			free(tokens[j]);
+			j++;
+		}
+		free(tokens);
 		return (1);
 	}
 	childID = fork();
@@ -29,7 +36,7 @@ int execute(char **tokens, char **env)
 	{
 		if (execve(tokens[0], tokens, env) == -1)
 		{
-			perror("Execve");
+			perror("./hsh");
 			exit(EXIT_FAILURE);
 		}
 	}

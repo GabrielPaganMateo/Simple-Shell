@@ -9,7 +9,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 {
 	char *line = NULL, **tokens = NULL;
 	size_t buflen = 0;
-	int i = 0, flag;
+	int flag;
 
 	while (1)
 	{
@@ -33,14 +33,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		tokens = split_input(line, " \n");
 		execute(tokens, env);
 		free(line);
-		line = NULL;
-		while (tokens[i])
-		{
-			free(tokens[i]);
-			i++;
-		}
 	}
-	free(line);
-	line = NULL;
 	return(0);
 }
