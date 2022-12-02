@@ -22,7 +22,7 @@ char *get_path(char **env)
 	}
 	return (NULL);
 }
-/*
+
 char **split_dirs(char *path)
 {
 	int i = 0;
@@ -30,26 +30,30 @@ char **split_dirs(char *path)
 	char *token;
 
 
-	token = strtok(path, ":");
-	while (token != NULL)
-	{
-		dirs[i] = _strdup(token);
-		token = strtok(NULL, ":");
-		i++;
-	}
+	dirs = split_input(path, ":");
 	return (dirs);
-}*/
+}
 
 
 int main(int ac, char **av, char **env)
 {
+	int i;
 	char *BRRR;
+	char **UAA;
 
 	(void)ac;
 	(void)av;
 
 	BRRR = get_path(env);
 	printf("%s\n", BRRR);
+	UAA = split_dirs(BRRR);
+
+	printf("%s\n", BRRR);
+
+	for (i = 0; UAA[i] != NULL; i++)
+	{
+		printf("%s\n", UAA[i]);
+	}
 
 	return (0);
 }
