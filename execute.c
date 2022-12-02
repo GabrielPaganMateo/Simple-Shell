@@ -5,7 +5,7 @@
  * @env: pointer to environment variables
  * Return: Always 0 success
  */
-int execute(char *line, char **tokens, char **env)
+int execute(char *line, char **tokens, char **av, char **env)
 {
 	pid_t childID;
 	unsigned int i = 0;
@@ -29,7 +29,7 @@ int execute(char *line, char **tokens, char **env)
 		}
 		else if (execve(tokens[0], tokens, env) == -1)
 		{
-			perror("./hsh");
+			_printf("%s: 1: %s: not found\n", av[0], tokens[0]);
 			exit(EXIT_FAILURE);
 		}
 	}

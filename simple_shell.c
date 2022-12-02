@@ -5,7 +5,7 @@
  *@ac: arguments count
  *Return: infinite loop to display prompt and read lines
  */
-int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
+int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *line = NULL, **tokens = NULL, *path = NULL;
 	size_t buflen = 0;
@@ -36,7 +36,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 			free(line);
 			exit(0);
 		}
-		execute(path, tokens, env);
+		execute(path, tokens, av, env);
 	}
 	return(0);
 }
