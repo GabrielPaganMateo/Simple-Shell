@@ -20,4 +20,6 @@ int _strcmp(char *s1, char *s2);
 int _env(char *line, char **env);
 int X(char *line);
 char *_strcpy(char *dest, char *src);
+char *_strdup(const char *s);
+char *_memcpy(char *dest, char *src, unsigned int n);
 #endif
