@@ -11,17 +11,7 @@ int execute(char *line, char **tokens, char **env)
 	unsigned int i = 0;
 	int j = 0, status;
 
-	if (_strcmp(tokens[0], "exit") == 0)
-	{
-		free(line);
-		while (tokens[j])
-		{
-			free(tokens[j]);
-			j++;
-		}
-		free(tokens);
-		exit(0);
-	}
+	(void)line;
 	childID = fork();
 	if (childID == -1)
 		perror("Error");

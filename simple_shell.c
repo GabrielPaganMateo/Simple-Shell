@@ -30,6 +30,12 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 			continue;
 		}
 		tokens = split_input(line, " \n");
+		if (_strcmp(tokens[0], "exit") == 0)
+		{
+			free_grid(tokens);
+			free(line);
+			exit(0);
+		}
 		execute(path, tokens, env);
 	}
 	return(0);
