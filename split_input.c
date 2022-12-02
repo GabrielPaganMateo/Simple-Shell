@@ -16,7 +16,7 @@ char **split_input(char *line, char *delimiter)
 	token = strtok(line, delimiter);
 	while (token != NULL)
 	{
-		tokens[i] = malloc(sizeof(char *) * _strlen(token) + 1);
+		tokens[i] = malloc(sizeof(char) * _strlen(token) + 1);
 		if (tokens == NULL)
 			return (NULL);
 		_strcpy(tokens[i], token);
