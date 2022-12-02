@@ -20,7 +20,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		flag = getline(&line, &buflen, stdin);
 		if (flag == EOF)
 		{
-			write(1, "\n", 1);
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
@@ -28,7 +27,6 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 		{
 			free(line);
 			line = NULL;
-			write(1, "$ ", 2);
 			continue;
 		}
 		tokens = split_input(line, " \n");
