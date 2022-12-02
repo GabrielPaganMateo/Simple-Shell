@@ -23,7 +23,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-		if (line[0] == '\n')
+		if (line[0] == '\n' || line[0] == ' ')
 		{
 			free(line);
 			line = NULL;
