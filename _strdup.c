@@ -1,16 +1,21 @@
 #include "header.h"
-/*
- *
+/**
+ *_strdup-function to duplicate strings
+ *@s: pointer to string
+ *Return: string duplicate it
  */
-char *_strdup(char *str)
+char *_strdup(char *s)
 {
-	int len;
+	size_t len;
 	char *copy;
 
-	len = strlen(str) + 1;
-	if (!(copy = malloc((u_int)len)))
-		return (NULL);
-	memcpy(copy, str, len);
+	len = _strlen(s) + 1;
+
+	copy = malloc(sizeof(len));
+
+	if (copy)
+	{
+		_memcpy(copy, s, len);
+	}
 	return (copy);
 }
-

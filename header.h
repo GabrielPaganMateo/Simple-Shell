@@ -28,5 +28,6 @@ char *get_path(char **tokens);
 char *_strpbrk(char *s, char *accept);
 char **split_dirs(char *path);
 void free_grid(char **grid);
-char *_strdup(char *str);
+char *_strdup(char *s);
+char *_memcpy(char *dest, char *src, unsigned int n);
 #endif

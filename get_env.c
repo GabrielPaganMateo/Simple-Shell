@@ -9,9 +9,11 @@ char *get_path(char **env)
 
 	while (env[i] != NULL)
 	{
-		if (strncmp(env[i], "PATH", 4) == 0)
+		if (_strncmp(env[i], "PATH", 4) == 0)
 		{
-			copy_path = split_input(env[i], "=");
+			path = strdup(env[i]);
+			copy_path = split_input(path, "=");
+			free(path);
 			path = strdup(copy_path[1]);
 			free_grid(copy_path);
 			return (path);
@@ -41,7 +43,7 @@ char **split_dirs(char *path)
 
 int main(int ac, char **av, char **env)
 {
-	char *BRRR = NULL;
+	char *BRRR;
 
 	(void)ac;
 	(void)av;

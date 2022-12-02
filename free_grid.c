@@ -8,6 +8,7 @@ void free_grid(char **grid)
 	while (grid[i] != NULL)
 	{
 		free(grid[i]);
+		i++;
 	}
 	free(grid);
 }
