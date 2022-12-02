@@ -4,7 +4,7 @@
  *@s: pointer to string
  *Return: string duplicate it
  */
-char *_strdup(const char *s)
+char *_strdup(char *s)
 {
 	size_t len;
 	char *copy;

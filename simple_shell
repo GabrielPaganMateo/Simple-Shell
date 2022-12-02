@@ -7,7 +7,7 @@
  */
 int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char **env)
 {
-	char *line = NULL, **tokens = NULL;
+	char *line = NULL, **tokens = NULL, *path = NULL;
 	size_t buflen = 0;
 	int flag;
 
@@ -32,7 +32,7 @@ int main(int ac __attribute__((unused)), char **av __attribute__((unused)), char
 			continue;
 		}
 		tokens = split_input(line, " \n");
-		execute(line, tokens, env);
+		execute(path, tokens, env);
 	}
 	return(0);
 }
