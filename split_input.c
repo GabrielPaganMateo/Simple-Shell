@@ -19,8 +19,10 @@ char **split_input(char *line, char *delimiter)
 		tokens[i] = malloc(sizeof(char) * _strlen(token) + 1);
 		if (tokens == NULL)
 			return (NULL);
+
 		_strcpy(tokens[i], token);
 		i++;
+
 		token = NULL;
 		token = strtok(NULL, delimiter);
 	}

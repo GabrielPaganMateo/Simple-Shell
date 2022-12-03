@@ -44,5 +44,5 @@ int execute(char *line, char **tokens, char **av, char **env)
 		}
 		free(tokens);
 	}
-	return (1);
+	return (0);
 }

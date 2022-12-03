@@ -11,6 +11,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	size_t buflen = 0;
 	int flag;
 
+	(void)av;
+	(void)env;
+
 	while (1)
 	{
 		if (isatty(0))
@@ -28,6 +31,12 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			free(line);
 			line = NULL;
 			continue;
+		}
+		if (line[0] == 27)
+		{
+				execve(line, av, NULL);
+				perror("./hsh");
+				continue;
 		}
 		tokens = split_input(line, " \n");
 		if (_strcmp(tokens[0], "exit") == 0)
