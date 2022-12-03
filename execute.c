@@ -5,7 +5,7 @@
  * @env: pointer to environment variables
  * Return: Always 0 success
  */
-int execute(char *line, char **tokens, char **av, char **env)
+int execute(char *line, char **tokens, char **av, char **env, int count)
 {
 	pid_t childID;
 	unsigned int i = 0;
@@ -21,15 +21,19 @@ int execute(char *line, char **tokens, char **av, char **env)
 		{
 			while (env[i])
 			{
-			write(1, env[i], _strlen(env[i]));
-			write(1, "\n", 1);
-			i++;
+				write(1, env[i], _strlen(env[i]));
+				write(1, "\n", 1);
+				i++;
 			}
+			count = cmdcount();
 			return (1);
 		}
 		else if (execve(tokens[0], tokens, env) == -1)
 		{
-			_printf("%s: 1: %s: not found\n", av[0], tokens[0]);
+			count = cmdcount();
+			_printf("%s: ", av[0]);
+			_printf("%i: ", count);
+			_printf("%s: not found\n", tokens[0]);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -44,5 +48,6 @@ int execute(char *line, char **tokens, char **av, char **env)
 		}
 		free(tokens);
 	}
+	count = cmdcount();
 	return (0);
 }

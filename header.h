@@ -13,7 +13,7 @@
 extern char **environ;
 char *read_line(void);
 char **split_input(char *line, char *delimiter);
-int execute(char *line, char **arguments, char **av, char **env);
+int execute(char *line, char **arguments, char **av, char **env, int cmdcount);
 void print_prompt1(void);
 void print_prompt2(void);
 int _strlen(char *s);
@@ -39,4 +39,5 @@ int print_string(char *a);
 int print_int(int i);
 int print_default(char a);
 int print_percent(void);
+int cmdcount();
 #endif

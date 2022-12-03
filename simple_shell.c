@@ -9,10 +9,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *line = NULL, **tokens = NULL, *path = NULL;
 	size_t buflen = 0;
-	int flag;
+	int flag, count = 0;
 
 	(void)av;
-	(void)env;
 
 	while (1)
 	{
@@ -45,7 +44,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			free(line);
 			exit(0);
 		}
-		execute(path, tokens, av, env);
+		execute(path, tokens, av, env, count);
 	}
 	return(0);
 }
