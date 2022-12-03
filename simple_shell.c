@@ -31,12 +31,6 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			line = NULL;
 			continue;
 		}
-		if (line[0] == 27)
-		{
-				execve(line, av, NULL);
-				perror("./hsh");
-				continue;
-		}
 		tokens = split_input(line, " \n");
 		if (_strcmp(tokens[0], "exit") == 0)
 		{
