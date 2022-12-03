@@ -13,7 +13,7 @@
 extern char **environ;
 char *read_line(void);
 char **split_input(char *line, char *delimiter);
-int execute(char *line, char **arguments, char **env);
+int execute(char *line, char **arguments, char **av, char **env, int cmdcount);
 void print_prompt1(void);
 void print_prompt2(void);
 int _strlen(char *s);
@@ -30,4 +30,14 @@ char **split_dirs(char *path);
 void free_grid(char **grid);
 char *_strdup(char *s);
 char *_memcpy(char *dest, char *src, unsigned int n);
+#include <stdarg.h>
+#include <unistd.h>
+#include <string.h>
+int _printf(const char *format, ...);
+int print_char(int a);
+int print_string(char *a);
+int print_int(int i);
+int print_default(char a);
+int print_percent(void);
+int cmdcount();
 #endif
