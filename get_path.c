@@ -57,7 +57,6 @@ char *add_path(char **tokens, char **dirs)
 		}
 		i++;
 	}
-	printf("%s\n", cmd);
 	return (tokens[0]);
 }
 
