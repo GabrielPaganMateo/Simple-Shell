@@ -40,4 +40,6 @@ int print_int(int i);
 int print_default(char a);
 int print_percent(void);
 int cmdcount();
+char *_strstr(char *haystack, char *needle);
+char *add_path(char **tokens, char **dirs);
 #endif

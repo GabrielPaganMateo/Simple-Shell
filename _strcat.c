@@ -13,13 +13,15 @@ char *_strcat(char *dest, char *src)
 		dlength++;
 	}
 
+	dest[dlength] = '/';
+
 	for (i = 0 ; ; i++)
 	{
-		dest[dlength + i] = src[i];
+		dest[dlength + 1 + i] = src[i];
 
 		if (src[i] == '\0')
 		{
-		return (dest);
+			return (dest);
 		}
 	}
 }

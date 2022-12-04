@@ -7,11 +7,16 @@
  */
 int execute(char *line, char **tokens, char **av, char **env, int count)
 {
+	char *path, **dirs, *cmd;
 	pid_t childID;
 	unsigned int i = 0;
 	int j = 0, status;
 
 	(void)line;
+
+	path = get_path(env);
+	dirs = split_dirs(path);
+	cmd = add_path(tokens, dirs);
 	childID = fork();
 	if (childID == -1)
 		perror("Error");
@@ -28,7 +33,7 @@ int execute(char *line, char **tokens, char **av, char **env, int count)
 			count = cmdcount();
 			return (1);
 		}
-		else if (execve(tokens[0], tokens, env) == -1)
+		else if (execve(cmd, tokens, env) == -1)
 		{
 			count = cmdcount();
 			_printf("%s: ", av[0]);
