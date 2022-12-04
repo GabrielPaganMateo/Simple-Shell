@@ -11,10 +11,10 @@ char *get_path(char **env)
 	{
 		if (_strncmp(env[i], "PATH", 4) == 0)
 		{
-			path = strdup(env[i]);
+			path = _strdup(env[i]);
 			copy_path = split_input(path, "=");
 			free(path);
-			path = strdup(copy_path[1]);
+			path = _strdup(copy_path[1]);
 			free_grid(copy_path);
 			return (path);
 		}
