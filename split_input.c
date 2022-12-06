@@ -3,7 +3,7 @@
  * split_input-function to divide arguments on command line
  * @line: pointer to input string
  * @delimiter: pointer to delimiters
- * Return: arguments divided
+ * Return: arguments tokenized
  */
 char **split_input(char *line, char *delimiter)
 {
@@ -19,10 +19,8 @@ char **split_input(char *line, char *delimiter)
 		tokens[i] = malloc(sizeof(char) * _strlen(token) + 1);
 		if (tokens == NULL)
 			return (NULL);
-
 		_strcpy(tokens[i], token);
 		i++;
-
 		token = NULL;
 		token = strtok(NULL, delimiter);
 	}
