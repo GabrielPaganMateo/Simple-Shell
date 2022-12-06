@@ -50,15 +50,6 @@ char *add_path(char **tokens, char **dirs)
 
 	while (dirs[i] != NULL)
 	{
-		if (_strstr(dirs[i], tokens[0]) != NULL)
-		{
-			break;
-		}
-		i++;
-	}
-	i = 0;
-	while (dirs[i] != NULL)
-	{
 		cmd = _strcat(dirs[i], tokens[0]);
 		if (stat(cmd, &sb) == 0)
 		{
