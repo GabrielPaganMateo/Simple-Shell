@@ -1,6 +1,8 @@
 #include "header.h"
-/*
- *
+/**
+ *get_path-function to get the PATH directories
+ *@env: environment variables
+ *Return: copy of path from index position
  */
 char *get_path(char **env)
 {
@@ -11,10 +13,10 @@ char *get_path(char **env)
 	{
 		if (_strncmp(env[i], "PATH", 4) == 0)
 		{
-			path = _strdup(env[i]);
+			path = malloc(sizeof(char) * _strlen(env[i]));
+			_strcpy(path, env[i]);
 			copy_path = split_input(path, "=");
-			free(path);
-			path = _strdup(copy_path[1]);
+			_strcpy(path, copy_path[1]);
 			free_grid(copy_path);
 			return (path);
 		}
@@ -22,7 +24,10 @@ char *get_path(char **env)
 	}
 	return (NULL);
 }
-/*
+/**
+ * split_dirs-function to tokenize the directories
+ * @path: pointer to the array of directories
+ * Return: directories divided
 */
 char **split_dirs(char *path)
 {
@@ -31,7 +36,12 @@ char **split_dirs(char *path)
 	dirs = split_input(path, ":");
 	return (dirs);
 }
-/**/
+/**
+ *add_path-function to concatenate command to directory
+ *@tokens: arguments passed to command line
+ *@dirs: pointer to array of directories
+ *Return: command concatenated to current directory
+ */
 char *add_path(char **tokens, char **dirs)
 {
 	char *cmd;
@@ -59,4 +69,3 @@ char *add_path(char **tokens, char **dirs)
 	}
 	return (tokens[0]);
 }
-
