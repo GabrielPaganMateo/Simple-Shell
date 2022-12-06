@@ -27,7 +27,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		}
 		while (line[j] == ' ')
 			j++;
-		if (line[0] == '\n')
+		if (line[0] == '\n' || line[0] == ' ')
 		{
 			free(line);
 			line = NULL;
