@@ -9,7 +9,7 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *line = NULL, **tokens = NULL, *path = NULL;
 	size_t buflen = 0;
-	int flag, count = 0, i = 0;
+	int flag, count = 0, i = 0, j = 0;
 
 	while (1)
 	{
@@ -25,7 +25,9 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-		if (line[0] == '\n' || line[0] == ' ')
+		while (line[j] == ' ')
+			j++;
+		if (line[0] == '\n')
 		{
 			free(line);
 			line = NULL;
