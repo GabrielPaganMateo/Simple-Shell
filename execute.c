@@ -25,34 +25,28 @@ int execute(char *line, char **tokens, char **av, char **env, int count)
 {
 	char *path, **dirs, *cmd;
 	pid_t childID;
-	unsigned int i = 0;
 	int j = 0, status;
+	struct stat sb;
 	(void)line;
 
-	path = get_path(env);
-	dirs = split_dirs(path);
-	cmd = add_path(tokens, dirs);
 	childID = fork();
 	if (childID == -1)
 		perror("Error");
 	else if (childID == 0)
 	{
-		if (_strcmp(tokens[0], "env") == 0)
+		if (stat(tokens[0], &sb) == 0)
 		{
-			while (env[i])
+			if (execve(tokens[0], tokens, env) == -1)
 			{
-				write(1, env[i], _strlen(env[i]));
-				write(1, "\n", 1);
-				i++;
+				count = cmdcount();
+				error_msg(av, count, tokens);
 			}
-			count = cmdcount();
-			return (1);
 		}
-		else if (execve(cmd, tokens, env) == -1)
-		{
-			count = cmdcount();
-			error_msg(av, count, tokens);
-		}
+		path = get_path(env);
+		dirs = split_dirs(path);
+		cmd = add_path(tokens, dirs);
+
+		execve(cmd, tokens, env);
 	}
 	else
 	{
@@ -65,8 +59,6 @@ int execute(char *line, char **tokens, char **av, char **env, int count)
 		}
 		free(tokens);
 	}
-	free(path);
-	free(dirs);
 	free(line);
 	count = cmdcount();
 	return (0);
