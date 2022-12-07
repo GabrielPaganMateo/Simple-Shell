@@ -45,7 +45,7 @@ int execute(char *line, char **tokens, char **av, char **env, int count)
 		path = get_path(env);
 		dirs = split_dirs(path);
 		cmd = add_path(tokens, dirs);
-
+		if (cmd != NULL || tokens != NULL)
 		execve(cmd, tokens, env);
 	}
 	else
