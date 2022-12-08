@@ -1,0 +1,51 @@
+.TH HSH 1 "December 2022" "version 1.0" "HolbertonSchool-Simple_Shell"
+.SH NAME
+hsh - Simple Shell, basic command line interpreter
+.SH SYNOPSIS
+.IP Interactive Use:
+  ./hsh $[command] [-options]
+.IP Non-interactive Use:
+  echo "[command] [-options]" | ./hsh
+
+.SH DESCRIPTION
+The Holberton School Simple Shell (hsh) is a command language interpreter that executes commands read from a command line string. The application shall ensure that the commands will be executed or expressed on the standard output per the users input.
+
+.SH BUILTINS
+The following commands are builtin because they need to perform some operation that can't be performed by a separate process.
+
+The builtin commands are:
+.IP CTRL+D
+Terminate the shell process.
+.IP exit
+Terminate the shell process.
+.IP env
+Display all environment variables.
+
+.SH EXAMPLE
+Execute simple shell commands and terminate the program.
+  1) Open simple shell command line
+
+    ./hsh
+
+  2) Execute 'ls' command within simple shell
+
+    ls -l
+
+  3) Execute 'env' builtin command
+
+    env
+
+  4) Terminate the simple shell program
+
+    exit
+
+.SH RETURN VALUE
+Upon succeful termination of the program, 0 is returned.
+
+If an output error is encountered, the program will be terminated.
+.SH BUGS
+No known defects have been identified. To report any bugs, send an email to 5673@holbertonstudents.com or 5675@holbertonstudents.com
+.SH AUTHOR(s)
+Gabriel Pagan and Angel Carrion
+.SH SEE ALSO
+sh(1)
