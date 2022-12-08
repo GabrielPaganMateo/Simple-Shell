@@ -55,13 +55,7 @@ int execute(char *line, char **tokens, char **av, char **env, int count)
 	else
 	{
 		wait(&status);
-		j = 0;
-		while (tokens[j])
-		{
-			free(tokens[j]);
-			j++;
-		}
-		free(tokens);
+		free_grid(tokens);
 	}
 	free(line);
 	count = cmdcount();

@@ -1,6 +1,9 @@
 #include "header.h"
-/*
- *
+/**
+ * *_strcat- concatenate string
+ * @dest: destination string
+ * @src: source string
+ * Return: pointer to destination string
  */
 char *_strcat(char *dest, char *src)
 {

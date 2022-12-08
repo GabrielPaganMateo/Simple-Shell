@@ -1,10 +1,12 @@
 #include "header.h"
-/*
- *
+/**
+ * cmdcount - counts the amount of commands executed in the shell
+ * Return: count
  */
-int cmdcount()
+int cmdcount(void)
 {
-	static int count = 0;
+	static int count;
+
 	count++;
 	return (count);
 }

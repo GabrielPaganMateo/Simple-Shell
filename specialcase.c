@@ -1,9 +1,8 @@
 #include "header.h"
 /**
  * specialcase - confirms if command line has ^[[C or \n
- * @line - line obtained from getline
- * @env - external environment
- * @av - command line arguments
+ * @line: line obtained from getline
+ * @av: command line arguments
  * Return: 0 if \n or ^[[C edge case, else return 1
  */
 int specialcase(char *line, char **av)
@@ -18,7 +17,7 @@ int specialcase(char *line, char **av)
 	{
 		execve(line, av, NULL);
 		perror("./hsh");
-		return(0);
+		return (0);
 	}
-	return(1);
+	return (1);
 }
