@@ -36,4 +36,5 @@ char *_strstr(char *haystack, char *needle);
 char *add_path(char **tokens, char **dirs);
 int builtin(char **tokens, char **env);
 int specialcase(char *line, char **av);
+char *i_to_a(int i);
 #endif

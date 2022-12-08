@@ -7,10 +7,17 @@
  */
 void error_msg(char **av, int count, char **tokens)
 {
-	_printf("%s: ", av[0]);
-	 _printf("%i: ", count);
-	_printf("%s: not found\n", tokens[0]);
-	exit(EXIT_SUCCESS);
+	char *CS = ": ";
+	char *NF = "not found\n";
+
+	write(2, av[0], _strlen(av[0]));
+	write(2, CS, 2);
+	dprintf(STDERR_FILENO, "%i", count);
+	write(2, CS, 2);
+	write(2, tokens[0], _strlen(tokens[0]));
+	write(2, CS, 2);
+	write(2, NF, _strlen(NF));
+	exit(127);
 }
 /**
  * execute - function to execute commands from command line
