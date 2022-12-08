@@ -10,7 +10,7 @@ void error_msg(char **av, int count, char **tokens)
 	_printf("%s: ", av[0]);
 	 _printf("%i: ", count);
 	_printf("%s: not found\n", tokens[0]);
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
 /**
  * execute - function to execute commands from command line
@@ -25,7 +25,7 @@ int execute(char *line, char **tokens, char **av, char **env, int count)
 {
 	char *path, **dirs, *cmd;
 	pid_t childID;
-	int j = 0, status;
+	int status;
 	struct stat sb;
 	(void)line;
 

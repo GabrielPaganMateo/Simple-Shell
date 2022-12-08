@@ -23,7 +23,7 @@ int builtin(char **tokens, char **env)
 	if (_strcmp(tokens[0], "exit") == 0)
 	{
 		free_grid(tokens);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	return (1);
 }
