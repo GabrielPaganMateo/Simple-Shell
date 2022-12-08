@@ -2,8 +2,13 @@
 .SH NAME
 hsh - Simple Shell, basic command line interpreter
 .SH SYNOPSIS
-.IP Interactive Use:
-  ./hsh $[command] [-options]
+#include "header.h"
+
+Modes:
+.IP Interactive
+  ./hsh
+$[command] [-options]
+
 .IP Non-interactive Use:
   echo "[command] [-options]" | ./hsh
 
@@ -23,6 +28,7 @@ Display all environment variables.
 
 .SH EXAMPLE
 Execute simple shell commands and terminate the program.
+
   1) Open simple shell command line
 
     ./hsh
