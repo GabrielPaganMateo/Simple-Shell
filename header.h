@@ -42,4 +42,6 @@ int print_percent(void);
 int cmdcount();
 char *_strstr(char *haystack, char *needle);
 char *add_path(char **tokens, char **dirs);
+int builtin(char **tokens, char **env);
+int specialcase(char *line, char **av);
 #endif

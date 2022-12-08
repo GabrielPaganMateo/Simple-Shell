@@ -3,13 +3,14 @@
  *main-function for infinite loop
  *@env: environment
  *@ac: arguments count
+ *@av: command line arguments
  *Return: infinite loop to display prompt and read lines
  */
 int main(int ac __attribute__((unused)), char **av, char **env)
 {
 	char *line = NULL, **tokens = NULL, *path = NULL;
 	size_t buflen = 0;
-	int flag, count = 0, i = 0;
+	int flag, count = 0;
 
 	while (1)
 	{
@@ -17,49 +18,28 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 		buflen = 0;
 		tokens = NULL;
 		if (isatty(0))
-		{
 			write(1, "$ ", 2);
-		}
 		flag = getline(&line, &buflen, stdin);
 		if (flag == EOF)
 		{
 			free(line);
 			exit(EXIT_SUCCESS);
 		}
-		if (line[0] == '\n')
+		if (specialcase(line, av) == 0)
 		{
-			free(line);
-			line = NULL;
-			continue;
-		}
-		if (line[0] == 27)
-		{
-			execve(line, av, NULL);
-			perror("./hsh");
+			count = cmdcount();
 			continue;
 		}
 		tokens = split_input(line, " \n");
 		free(line);
 		if (tokens[0] != NULL)
 		{
-			if (_strcmp(tokens[0], "env") == 0)
+			if (builtin(tokens, env) == 0)
 			{
-				while (env[i])
-				{
-					write(1, env[i], _strlen(env[i]));
-					write(1, "\n", 1);
-					i++;
-				}
 				count = cmdcount();
-				free_grid(tokens);
 				continue;
 			}
-			if (_strcmp(tokens[0], "exit") == 0)
-			{
-				free_grid(tokens);
-				exit(0);
-			}
-		execute(path, tokens, av, env, count);
+			execute(path, tokens, av, env, count);
 		}
 		else
 		free(tokens);
@@ -67,5 +47,5 @@ int main(int ac __attribute__((unused)), char **av, char **env)
 	free(path);
 	free_grid(tokens);
 	free(line);
-	return(0);
+	return (0);
 }
