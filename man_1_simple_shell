@@ -7,16 +7,17 @@ hsh - Simple Shell, basic command line interpreter
 Modes:
 .IP Interactive
   ./hsh
-$[command] [-options]
+
+  $[command] [-options]
 
 .IP Non-interactive Use:
   echo "[command] [-options]" | ./hsh
 
 .SH DESCRIPTION
-The Holberton School Simple Shell (hsh) is a command language interpreter that executes commands read from a command line string. The application shall ensure that the commands will be executed or expressed on the standard output per the users input.
+The Holberton School Simple Shell (hsh) is a command language interpreter that executes commands read from a command line string. The application shall ensure that the commands will be executed or expressed on the standard output per the users input. The only commands executed are those that correspond with the name of an executable program file.
 
 .SH BUILTINS
-The following commands are builtin because they need to perform some operation that can't be performed by a separate process.
+The following commands are builtin because they execute an operation that can't be performed by a separate process.
 
 The builtin commands are:
 .IP CTRL+D
@@ -29,26 +30,33 @@ Display all environment variables.
 .SH EXAMPLE
 Execute simple shell commands and terminate the program.
 
-  1) Open simple shell command line
+1) Example for executing 'ls' in Interactive mode
 
-    ./hsh
+  username@original-prompt:~$ ./hsh
 
-  2) Execute 'ls' command within simple shell
+  $ ls
 
-    ls -l
+  env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell_0.3
 
-  3) Execute 'env' builtin command
+2) Example for executing 'ls' in Non-Interactive mode
 
-    env
+  username@original-prompt:~$ echo 'ls' | ./hsh
 
-  4) Terminate the simple shell program
+  env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell_0.3
 
-    exit
+3) Example for terminating the shell
+
+  username@original-prompt:~$ ./hsh
+
+  $ exit
+
+  username@original-prompt:~$
+
 
 .SH RETURN VALUE
 Upon succeful termination of the program, 0 is returned.
 
-If an output error is encountered, the program will be terminated.
+If an input error is encountered, the program will print an error message and ask for another input.
 .SH BUGS
 No known defects have been identified. To report any bugs, send an email to 5673@holbertonstudents.com or 5675@holbertonstudents.com
 .SH AUTHOR(s)
