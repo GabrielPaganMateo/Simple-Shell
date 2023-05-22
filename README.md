@@ -4,6 +4,8 @@
 #### The goal of this project was to help us understand how a shell works and to challenge us to use everything learned form the past three months.
 #### A shell is a command-line interpreter that allows the user to interact with the operating system. It provides a simple interface for entering and executing comamnds, and allows users to navigate the files system, run programs and perform various tasks. NOTE that our shell is just a simple version and doesn't perform as a full interpreter.
 
+![Alt text](Shell.jpg "Optional title")
+
 ### Usage
 #### To run this program:
 ***1) clone the repo***
