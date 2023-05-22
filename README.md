@@ -1,12 +1,10 @@
-# Simple Shell
+# Simple Shell <div id="badges"> <a href="https://www.linkedin.com/in/gabriel-pagan-232570254/"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/></a>
 ### Introduction
 #### This is a project created as part of Holberton School curriculum. It consisted in writing a simple shell version in C language using a limited number of functions and system calls. To help us through the creation of this interpreter, we used some of our own custome functions that we created in these past three months as part of the Holberton low level program. [See repository here](https://github.com/AngelJCT/holbertonschool-low_level_programming).
 #### The goal of this project was to help us understand how a shell works and to challenge us to use everything learned form the past three months.
 #### A shell is a command-line interpreter that allows the user to interact with the operating system. It provides a simple interface for entering and executing comamnds, and allows users to navigate the files system, run programs and perform various tasks. NOTE that our shell is just a simple version and doesn't perform as a full interpreter.
 
 ![Alt text](Shell.jpg "Optional title")
-
-<div id="badges"> <a href="https://www.linkedin.com/in/gabriel-pagan-232570254/"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/></a>
 
 ### Usage
 #### To run this program:
